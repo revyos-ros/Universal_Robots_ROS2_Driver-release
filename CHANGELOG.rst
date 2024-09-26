@@ -1,3 +1,40 @@
+2.4.10 (2024-09-11)
+-------------------
+* Fix for forward_velocity_controller test (`#1076 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1076>`_)
+* Update maintainers team (`#1088 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1088>`_)
+* Contributors: Vincenzo Di Pentima
+
+2.4.9 (2024-08-09)
+------------------
+* Added dynamics tag when using mock_components/GenericSystem (`#1075 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1075>`_)
+* Updated the UR family photo on the readme (`#1064 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1064>`_)
+* Fix passing launch_dashboard_client launch argument (`#1057 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1057>`_)
+* [doc] Add more documentation regarding usage (`#1055 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1055>`_)
+* Add doc to custom URScript commands that it needs to be in headless mode (`#1051 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1051>`_)
+* Update reference to ros2_controllers test node (`#1054 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1054>`_)
+* [doc] Update required polyscope version (`#1052 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1052>`_)
+* Add migration notes for jazzy (`#1045 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1045>`_)
+* Contributors: Felix Exner (fexner), Rune Søe-Knudsen
+
+2.4.8 (2024-07-01)
+------------------
+* Add sleep between controller stopper's controller queries (`#1038 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1038>`_)
+* Contributors: Felix Exner (fexner)
+
+2.4.7 (2024-06-19)
+------------------
+* Fix launching without a tf_prefix specified (`#1029 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1029>`_)
+* Contributors: Felix Exner (fexner)
+
+2.4.6 (2024-06-17)
+------------------
+* Remove tf_prefix from ur_control.launch.py (`#1020 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1020>`_)
+* Make moveit_config compatible to moveit_configs_builder (`#998 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/998>`_)
+* Remove extra spaces from start_ursim statement in tests (`#1010 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/pull/1010>`_)
+* Replace keepalive count (`#1002 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/1002>`_)
+* Restructure documentation for full stack documentation (`#984 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/984>`_)
+* Contributors: Felix Exner, Ruddick Lawrence, Vincenzo Di Pentima
+
 2.4.5 (2024-05-16)
 ------------------
 * Remove dependency to docker.io (`#985 <https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues/985>`_)
