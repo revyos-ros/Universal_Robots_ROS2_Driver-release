@@ -83,7 +83,7 @@ controller_interface::return_type ScaledJointTrajectoryController::update(const 
                  scaled_params_.speed_scaling_interface_name.c_str());
   }
 
-  if (get_state().id() == lifecycle_msgs::msg::State::PRIMARY_STATE_INACTIVE) {
+  if (get_lifecycle_state().id() == lifecycle_msgs::msg::State::PRIMARY_STATE_INACTIVE) {
     return controller_interface::return_type::OK;
   }
 
@@ -168,7 +168,7 @@ controller_interface::return_type ScaledJointTrajectoryController::update(const 
       // time_difference is
       // - negative until first point is reached
       // - counting from zero to time_from_start of next point
-      double time_difference = time.seconds() - segment_time_from_start.seconds();
+      const double time_difference = time_data.uptime.seconds() - segment_time_from_start.seconds();
       bool tolerance_violated_while_moving = false;
       bool outside_goal_tolerance = false;
       bool within_goal_time = true;
