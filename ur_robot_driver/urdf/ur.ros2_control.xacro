@@ -25,7 +25,7 @@
     script_command_port:=50004
     trajectory_port:=50003
     non_blocking_read:=true
-    keep_alive_count:=2
+    robot_receive_timeout:=0.04
     ">
 
     <xacro:property name="config_kinematics_parameters" value="${xacro.load_yaml(kinematics_parameters_file)}"/>
@@ -42,6 +42,7 @@
           <plugin>mock_components/GenericSystem</plugin>
           <param name="mock_sensor_commands">${mock_sensor_commands}</param>
           <param name="state_following_offset">0.0</param>
+          <param name="calculate_dynamics">true</param>
         </xacro:if>
         <xacro:unless value="${use_mock_hardware}">
           <plugin>ur_robot_driver/URPositionHardwareInterface</plugin>
@@ -69,7 +70,7 @@
           <param name="tool_tx_idle_chars">${tool_tx_idle_chars}</param>
           <param name="tool_device_name">${tool_device_name}</param>
           <param name="tool_tcp_port">${tool_tcp_port}</param>
-          <param name="keep_alive_count">${keep_alive_count}</param>
+          <param name="robot_receive_timeout">${robot_receive_timeout}</param>
         </xacro:unless>
       </hardware>
 
