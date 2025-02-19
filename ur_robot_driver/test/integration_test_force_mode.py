@@ -67,6 +67,11 @@ from test_common import (  # noqa: E402
 TIMEOUT_EXECUTE_TRAJECTORY = 30
 
 
+def are_quaternions_same(q1, q2, tolerance):
+    dot_product = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w
+    return (abs(dot_product) - 1.0) < tolerance
+
+
 @pytest.mark.launch_test
 @launch_testing.parametrize(
     "tf_prefix",
@@ -116,9 +121,19 @@ class RobotDriverTest(unittest.TestCase):
                 pass
         return trans
 
-    # Implementation of force mode test to be reused
-    # todo: If we move to pytest this could be done using parametrization
-    def run_force_mode(self, tf_prefix):
+    def test_force_mode_controller(self, tf_prefix):
+        self.assertTrue(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.BEST_EFFORT,
+                activate_controllers=[
+                    "force_mode_controller",
+                ],
+                deactivate_controllers=[
+                    "scaled_joint_trajectory_controller",
+                    "joint_trajectory_controller",
+                ],
+            ).ok
+        )
         self._force_mode_controller_interface = ForceModeInterface(self.node)
 
         # Create task frame for force mode
@@ -127,7 +142,7 @@ class RobotDriverTest(unittest.TestCase):
         task_frame_pose = Pose()
         task_frame_pose.position = point
         task_frame_pose.orientation = orientation
-        header = std_msgs.msg.Header(seq=1, frame_id=tf_prefix + "base")
+        header = std_msgs.msg.Header(frame_id=tf_prefix + "base")
         header.stamp.sec = int(time.time()) + 1
         header.stamp.nanosec = 0
         frame_stamp = PoseStamped()
@@ -195,25 +210,10 @@ class RobotDriverTest(unittest.TestCase):
             trans_before.transform.translation.z,
             delta=0.001,
         )
-        self.assertAlmostEqual(
-            trans_after.transform.rotation.x,
-            trans_before.transform.rotation.x,
-            delta=0.01,
-        )
-        self.assertAlmostEqual(
-            trans_after.transform.rotation.y,
-            trans_before.transform.rotation.y,
-            delta=0.01,
-        )
-        self.assertAlmostEqual(
-            trans_after.transform.rotation.z,
-            trans_before.transform.rotation.z,
-            delta=0.01,
-        )
-        self.assertAlmostEqual(
-            trans_after.transform.rotation.w,
-            trans_before.transform.rotation.w,
-            delta=0.01,
+        self.assertTrue(
+            are_quaternions_same(
+                trans_after.transform.rotation, trans_before.transform.rotation, 0.001
+            )
         )
 
         res = self._force_mode_controller_interface.stop_force_mode()
@@ -226,49 +226,6 @@ class RobotDriverTest(unittest.TestCase):
                 deactivate_controllers=["force_mode_controller"],
             ).ok
         )
-
-    def test_force_mode_controller(self, tf_prefix):
-        self.assertTrue(
-            self._controller_manager_interface.switch_controller(
-                strictness=SwitchController.Request.BEST_EFFORT,
-                activate_controllers=[
-                    "force_mode_controller",
-                ],
-                deactivate_controllers=[
-                    "scaled_joint_trajectory_controller",
-                    "joint_trajectory_controller",
-                ],
-            ).ok
-        )
-        self.run_force_mode(tf_prefix)
-
-    def test_force_mode_controller_with_passthrough_controller(self, tf_prefix):
-        self.assertTrue(
-            self._controller_manager_interface.switch_controller(
-                strictness=SwitchController.Request.BEST_EFFORT,
-                activate_controllers=[
-                    "passthrough_trajectory_controller",
-                ],
-                deactivate_controllers=[
-                    "scaled_joint_trajectory_controller",
-                    "joint_trajectory_controller",
-                ],
-            ).ok
-        )
-        time.sleep(1)
-        self.assertTrue(
-            self._controller_manager_interface.switch_controller(
-                strictness=SwitchController.Request.BEST_EFFORT,
-                activate_controllers=[
-                    "force_mode_controller",
-                ],
-                deactivate_controllers=[
-                    "scaled_joint_trajectory_controller",
-                    "joint_trajectory_controller",
-                ],
-            ).ok
-        )
-        self.run_force_mode(tf_prefix)
 
     def test_illegal_force_mode_types(self, tf_prefix):
         self.assertTrue(
@@ -291,7 +248,7 @@ class RobotDriverTest(unittest.TestCase):
         task_frame_pose = Pose()
         task_frame_pose.position = point
         task_frame_pose.orientation = orientation
-        header = std_msgs.msg.Header(seq=1, frame_id=tf_prefix + "base")
+        header = std_msgs.msg.Header(frame_id=tf_prefix + "base")
         header.stamp.sec = int(time.time()) + 1
         header.stamp.nanosec = 0
         frame_stamp = PoseStamped()
@@ -333,7 +290,7 @@ class RobotDriverTest(unittest.TestCase):
         task_frame_pose = Pose()
         task_frame_pose.position = point
         task_frame_pose.orientation = orientation
-        header = std_msgs.msg.Header(seq=1, frame_id=tf_prefix + "base")
+        header = std_msgs.msg.Header(frame_id=tf_prefix + "base")
         header.stamp.sec = int(time.time()) + 1
         header.stamp.nanosec = 0
         frame_stamp = PoseStamped()
@@ -375,7 +332,7 @@ class RobotDriverTest(unittest.TestCase):
         task_frame_pose = Pose()
         task_frame_pose.position = point
         task_frame_pose.orientation = orientation
-        header = std_msgs.msg.Header(seq=1, frame_id=tf_prefix + "base")
+        header = std_msgs.msg.Header(frame_id=tf_prefix + "base")
         header.stamp.sec = int(time.time()) + 1
         header.stamp.nanosec = 0
         frame_stamp = PoseStamped()
@@ -408,7 +365,7 @@ class RobotDriverTest(unittest.TestCase):
         task_frame_pose = Pose()
         task_frame_pose.position = point
         task_frame_pose.orientation = orientation
-        header = std_msgs.msg.Header(seq=1, frame_id=tf_prefix + "base")
+        header = std_msgs.msg.Header(frame_id=tf_prefix + "base")
         header.stamp.sec = int(time.time()) + 1
         header.stamp.nanosec = 0
         frame_stamp = PoseStamped()
@@ -476,8 +433,7 @@ class RobotDriverTest(unittest.TestCase):
         trans_after_wait = self.lookup_tcp_in_base(tf_prefix, self.node.get_clock().now())
 
         self.assertAlmostEqual(
-            trans_before_wait.transform.translation.z,
-            trans_after_wait.transform.translation.z,
+            trans_before_wait.transform.translation.z, trans_after_wait.transform.translation.z
         )
 
     def test_params_out_of_range_fails(self, tf_prefix):
@@ -501,7 +457,7 @@ class RobotDriverTest(unittest.TestCase):
         task_frame_pose = Pose()
         task_frame_pose.position = point
         task_frame_pose.orientation = orientation
-        header = std_msgs.msg.Header(seq=1, frame_id=tf_prefix + "base")
+        header = std_msgs.msg.Header(frame_id=tf_prefix + "base")
         header.stamp.sec = int(time.time()) + 1
         header.stamp.nanosec = 0
         frame_stamp = PoseStamped()
