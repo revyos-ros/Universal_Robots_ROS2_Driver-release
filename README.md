@@ -20,19 +20,19 @@ Check also [presentations and videos](ur_robot_driver/doc/resources/README.md) a
     <th>ROS2 Distro</th>
     <th>Humble</th>
     <th>Jazzy</th>
+    <th>Kilted</th>
     <th>Rolling</th>
-  </tr>
-
-  <tr>
-    <th>Branch</th>
-    <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/humble">humble</a></td>
-    <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/main">main</a></td>
-    <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/main">main</a></td>
-  </tr>
-
-  <tr>
-    <th>Release status</th>
-    <td> <!-- humble -->
+      </tr>
+      <tr>
+        <th>Branch</th>
+        <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/humble">humble</a></td>
+        <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/jazzy">jazzy</a></td>
+        <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/main">main</a></td>
+        <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/main">main</a></td>
+      </tr>
+      <tr>
+        <th>Release status</th>
+        <td> <!-- humble -->
       <a href='https://build.ros2.org/job/Hbin_uJ64__ur_calibration__ubuntu_jammy_amd64__binary/'><img src='https://build.ros2.org/job/Hbin_uJ64__ur_calibration__ubuntu_jammy_amd64__binary/badge/icon?subject=ur_calibration'></a><br/>
       <a href='https://build.ros2.org/job/Hbin_uJ64__ur_controllers__ubuntu_jammy_amd64__binary/'><img src='https://build.ros2.org/job/Hbin_uJ64__ur_controllers__ubuntu_jammy_amd64__binary/badge/icon?subject=ur_controllers'></a>
       <a href='https://build.ros2.org/job/Hbin_uJ64__ur_dashboard_msgs__ubuntu_jammy_amd64__binary/'><img src='https://build.ros2.org/job/Hbin_uJ64__ur_dashboard_msgs__ubuntu_jammy_amd64__binary/badge/icon?subject=ur_dashboard_msgs'></a>
@@ -45,6 +45,13 @@ Check also [presentations and videos](ur_robot_driver/doc/resources/README.md) a
       <a href='https://build.ros2.org/job/Jbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Jbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/badge/icon?subject=ur_dashboard_msgs'></a>
       <a href='https://build.ros2.org/job/Jbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Jbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/badge/icon?subject=ur_moveit_config'></a>
       <a href='https://build.ros2.org/job/Jbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Jbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/badge/icon?subject=ur_robot_driver'></a>
+    </td>
+    <td> <!-- kilted -->
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/badge/icon?subject=ur_calibration'></a><br/>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_controllers__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_controllers__ubuntu_noble_amd64__binary/badge/icon?subject=ur_controllers'></a>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/badge/icon?subject=ur_dashboard_msgs'></a>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/badge/icon?subject=ur_moveit_config'></a>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/badge/icon?subject=ur_robot_driver'></a>
     </td>
     <td> <!-- rolling -->
       <a href='https://build.ros2.org/job/Rbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Rbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/badge/icon?subject=ur_calibration'></a><br/>
@@ -97,32 +104,32 @@ For getting started, you'll basically need three steps:
    ```bash
    sudo apt-get install ros-humble-ur
    ```
-   See the [installation instructions](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/installation/installation.html) for more details and source-build instructions.
+   See the [installation instructions](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/installation/installation.html) for more details and source-build instructions.
 
 2. **Start & Setup the robot**. Once you've installed the driver, [setup the
-   robot](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/installation/robot_setup.html)
+   robot](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/installation/robot_setup.html)
    and [create a program for external
-   control](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/installation/install_urcap_e_series.html).
+   control](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/installation/install_urcap_e_series.html).
 
    Please do this step carefully and extract the calibration as explained
-   [here](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/installation/robot_setup.html#extract-calibration-information).
+   [here](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/installation/robot_setup.html#extract-calibration-information).
    Otherwise the TCP's pose will not be correct inside the ROS ecosystem.
 
    If no real robot is required, you can [use a simulated
-   robot](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html#usage-with-official-ur-simulator)
+   robot](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/usage.html#usage-with-official-ur-simulator)
    that will behave almost exactly like the real robot.
 
 3. **Start the driver**. See the [usage
-   documentation](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html) for
+   documentation](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/usage.html) for
    details.
 
    ```bash
-   # Replace ur5e with one of ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e, ur20, ur30
+   # Replace ur5e with one of ur3, ur3e, ur5, ur5e, ur7e, ur10, ur10e, ur12e, ur16e, ur15, ur20, ur30
    # Replace the IP address with the IP address of your actual robot / URSim
    ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5e robot_ip:=192.168.56.101
    ```
 
-4. Unless started in [headless mode](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/ROS_INTERFACE.html#headless-mode): Run the external_control program by **pressing `play` on the teach pendant**.
+4. Unless started in [headless mode](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/ROS_INTERFACE.html#headless-mode): Run the external_control program by **pressing `play` on the teach pendant**.
 
 
 ## MoveIt! support
@@ -135,8 +142,8 @@ Watch MoveIt in action with the Universal Robots ROS2 driver:
   *The video shows free-space trajectory planning around a modeled collision scene object using the MoveIt2 MotionPlanning widget for Rviz2.*
 
 See the [MoveIt!
-section](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html#using-moveit)
-of the [Usage guide](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html)
+section](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/usage.html#using-moveit)
+of the [Usage guide](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/doc/usage.html)
 for details.
 
 
