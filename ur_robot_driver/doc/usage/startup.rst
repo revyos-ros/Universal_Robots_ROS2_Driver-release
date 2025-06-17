@@ -9,7 +9,7 @@ Prepare the robot
 If you want to use a real robot, or a URSim simulator, with this driver, you need to prepare it,
 first. Make sure that you complete all steps from the :ref:`setup instructions<robot_setup>`,
 installed the External Control URCap and created a program as explained
-:ref:`here<install-urcap-e-series>`.
+:ref:`here<install_urcap>`.
 
 Launch files
 ------------
@@ -22,8 +22,8 @@ nodes for UR robots. The only required arguments are the ``ur_type`` and ``robot
 
    $ ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5e robot_ip:=192.168.56.101
 
-Allowed ``ur_type`` strings: ``ur3``, ``ur3e``, ``ur5``, ``ur5e``, ``ur10``, ``ur10e``, ``ur16e``,
-``ur20``, ``ur30``.
+Allowed ``ur_type`` strings: ``ur3``, ``ur3e``, ``ur5``, ``ur5e``, ``ur7e``, ``ur10``, ``ur10e``,
+``ur12e``, ``ur16e``, ``ur15``, ``ur20``, ``ur30``.
 
 Other important arguments are:
 
@@ -71,12 +71,12 @@ Depending on the :ref:`robot control mode<operation_modes>` do the following:
 * When the driver is started with ``headless_mode:=true`` nothing is needed. The driver is running
   already.
 
-.. _continuation_after_interruptions:
+
+.. _verify_calibration:
 
 Verify calibration info is being used correctly
 -----------------------------------------------
 
-.. _verify_calibration:
 
 If you passed a path to an extracted calibration via the *kinematics_params_file*
 parameter, ensure that the loaded calibration matches that of the robot by inspecting the console
@@ -98,8 +98,11 @@ Alternatively, search for the term *checksum* in the console output after launch
 Verify that the printed checksum matches that on the final line of your extracted calibration file.
 
 
+.. _continuation_after_interruptions:
+
 Continuation after interruptions
 --------------------------------
+
 
 Whenever the *External Control URCap* program gets interrupted, it has to be unpaused / restarted.
 
