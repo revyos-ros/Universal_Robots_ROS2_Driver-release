@@ -201,9 +201,12 @@ def generate_launch_description():
                 "ur3e",
                 "ur5",
                 "ur5e",
+                "ur7e",
                 "ur10",
                 "ur10e",
+                "ur12e",
                 "ur16e",
+                "ur15",
                 "ur20",
                 "ur30",
             ],
@@ -329,30 +332,6 @@ def generate_launch_description():
             "headless_mode",
             default_value="false",
             description="Enable headless mode for robot control",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "initial_joint_controller",
-            default_value="scaled_joint_trajectory_controller",
-            description="Initially loaded robot controller.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "activate_joint_controller",
-            default_value="true",
-            description="Activate loaded joint controller.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument("launch_rviz", default_value="true", description="Launch RViz?")
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "launch_dashboard_client",
-            default_value="true",
-            description="Launch Dashboard Client?",
         )
     )
     declared_arguments.append(
