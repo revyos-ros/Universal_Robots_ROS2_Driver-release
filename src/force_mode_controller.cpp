@@ -173,7 +173,8 @@ ur_controllers::ForceModeController::on_cleanup(const rclcpp_lifecycle::State& /
 controller_interface::return_type ur_controllers::ForceModeController::update(const rclcpp::Time& /*time*/,
                                                                               const rclcpp::Duration& /*period*/)
 {
-  async_state_ = command_interfaces_[CommandInterfaces::FORCE_MODE_ASYNC_SUCCESS].get_value();
+  async_state_ =
+      command_interfaces_[CommandInterfaces::FORCE_MODE_ASYNC_SUCCESS].get_optional().value_or(ASYNC_WAITING);
 
   // Publish state of force_mode?
   if (change_requested_) {
@@ -288,9 +289,11 @@ bool ForceModeController::setForceMode(const ur_msgs::srv::SetForceMode::Request
 
     tf2::Quaternion quat_tf;
     tf2::convert(task_frame_transformed.pose.orientation, quat_tf);
-    tf2::Matrix3x3 rot_mat(quat_tf);
-    rot_mat.getRPY(force_mode_parameters.task_frame[3], force_mode_parameters.task_frame[4],
-                   force_mode_parameters.task_frame[5]);
+    const double angle = quat_tf.getAngle();
+    const auto axis = quat_tf.getAxis();
+    force_mode_parameters.task_frame[3] = axis.x() * angle;  // rx
+    force_mode_parameters.task_frame[4] = axis.y() * angle;  // ry
+    force_mode_parameters.task_frame[5] = axis.z() * angle;  // rz
   } catch (const tf2::TransformException& ex) {
     RCLCPP_ERROR(get_node()->get_logger(), "Could not transform %s to robot base: %s",
                  req->task_frame.header.frame_id.c_str(), ex.what());
