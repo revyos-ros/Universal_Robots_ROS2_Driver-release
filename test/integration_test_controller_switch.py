@@ -52,7 +52,7 @@ from test_common import (  # noqa: E402
 @pytest.mark.launch_test
 @launch_testing.parametrize(
     "tf_prefix",
-    [("")],
+    [""],
     # [(""), ("my_ur_")],
 )
 def generate_test_description(tf_prefix):
@@ -402,6 +402,95 @@ class RobotDriverTest(unittest.TestCase):
                 strictness=SwitchController.Request.STRICT,
                 activate_controllers=[
                     "passthrough_trajectory_controller",
+                ],
+            ).ok
+        )
+
+    def test_tool_contact_compatibility(self):
+        # Deactivate all writing controllers
+        self.assertTrue(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.BEST_EFFORT,
+                deactivate_controllers=[
+                    "scaled_joint_trajectory_controller",
+                    "joint_trajectory_controller",
+                    "forward_position_controller",
+                    "forward_velocity_controller",
+                    "passthrough_trajectory_controller",
+                    "force_mode_controller",
+                    "tool_contact_controller",
+                ],
+            ).ok
+        )
+
+        time.sleep(3)
+        # Start tool contact controller and JTC
+        self.assertTrue(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                activate_controllers=[
+                    "scaled_joint_trajectory_controller",
+                    "tool_contact_controller",
+                ],
+            ).ok
+        )
+        self.assertTrue(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                deactivate_controllers=[
+                    "scaled_joint_trajectory_controller",
+                    "tool_contact_controller",
+                ],
+            ).ok
+        )
+
+        # Start tool contact controller and passthrough trajectory
+        self.assertTrue(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                activate_controllers=[
+                    "passthrough_trajectory_controller",
+                    "tool_contact_controller",
+                ],
+            ).ok
+        )
+        self.assertTrue(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                deactivate_controllers=[
+                    "passthrough_trajectory_controller",
+                    "tool_contact_controller",
+                ],
+            ).ok
+        )
+
+        # tool contact should not start with force_mode
+        self.assertFalse(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                activate_controllers=[
+                    "force_mode_controller",
+                    "tool_contact_controller",
+                ],
+            ).ok
+        )
+        self.assertFalse(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                activate_controllers=[
+                    "tool_contact_controller",
+                    "force_mode_controller",
+                ],
+            ).ok
+        )
+
+        # tool contact should not start with freedrive
+        self.assertFalse(
+            self._controller_manager_interface.switch_controller(
+                strictness=SwitchController.Request.STRICT,
+                activate_controllers=[
+                    "tool_contact_controller",
+                    "freedrive_mode_controller",
                 ],
             ).ok
         )
