@@ -15,12 +15,12 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(ur_robot_driver REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 find_package(Eigen3 REQUIRED)
-find_package(yaml-cpp REQUIRED)
+find_package(yaml_cpp_vendor REQUIRED)
 find_package(ur_client_library REQUIRED)
-
-set(YAML_CPP_INCLUDE_DIRS ${YAML_CPP_INCLUDE_DIR})
 
 ###########
 ## Build ##
@@ -33,15 +33,13 @@ add_library(calibration
 target_include_directories(calibration
   PUBLIC
     include
-    ${EIGEN3_INCLUDE_DIRS}
-    ${YAML_CPP_INCLUDE_DIRS}
 )
 target_link_libraries(calibration
-  ${YAML_CPP_LIBRARIES}
-)
-ament_target_dependencies(calibration
-  rclcpp
-  ur_robot_driver
+  ur_client_library::urcl
+  Eigen3::Eigen
+  yaml-cpp
+  rclcpp::rclcpp
+  ur_robot_driver::ur_robot_driver_log_handler
 )
 
 add_executable(calibration_correction
@@ -52,9 +50,8 @@ target_include_directories(calibration_correction
     include
 )
 target_link_libraries(calibration_correction
-  ur_client_library::urcl
-)
-target_link_libraries(calibration_correction
+  ${sensor_msgs_TARGETS}
+  tf2_ros::tf2_ros
   calibration
 )
 
