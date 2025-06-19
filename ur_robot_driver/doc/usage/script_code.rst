@@ -1,7 +1,9 @@
+:github_url: https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/blob/main/ur_robot_driver/doc/usage/script_code.rst
+
 Sending URScript code to the robot
 ==================================
 
-.. _script_command_interface:
+.. _script_command_interface_ros2:
 
 Custom URScript commands
 ------------------------
