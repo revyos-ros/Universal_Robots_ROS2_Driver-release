@@ -8,10 +8,12 @@ red pipeline there should be a corresponding issue labeled with [ci-failure](htt
   <tr>
     <th>Humble</th>
     <th>Jazzy</th>
+    <th>Kilted</th>
     <th>Rolling</th>
   </tr>
   <tr>
     <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/humble">humble</a></td>
+    <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/jazzy">jazzy</a></td>
     <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/main">main</a></td>
     <td><a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/tree/main">main</a></td>
   </tr>
@@ -29,28 +31,34 @@ red pipeline there should be a corresponding issue labeled with [ci-failure](htt
          <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/humble-semi-binary-main.yml/badge.svg?event=schedule"
               alt="Humble Semi-Binary Main"/>
       </a> <br />
-      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/humble-semi-binary-testing.yml?query=event%3Aschedule++">
-         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/humble-semi-binary-testing.yml/badge.svg?event=schedule"
-              alt="Humble Semi-Binary Testing"/>
-      </a>
     </td>
     <td> <!-- jazzy -->
-      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-main.yml?query=branch%3Amain+">
-         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-main.yml/badge.svg?branch=main"
+      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-main.yml?query=event%3Aschedule+">
+         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-main.yml/badge.svg?event=schedule"
               alt="Jazzy Binary Main"/>
       </a> <br />
-      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-testing.yml?query=branch%3Amain+">
-         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-testing.yml/badge.svg?branch=main"
+      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-testing.yml?query=event%3Aschedule+">
+         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-binary-testing.yml/badge.svg?event=schedule"
               alt="Jazzy Binary Testing"/>
       </a> <br />
-      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-semi-binary-main.yml?query=branch%3Amain+">
-         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-semi-binary-main.yml/badge.svg?branch=main"
+      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-semi-binary-main.yml?query=event%3Aschedule+">
+         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-semi-binary-main.yml/badge.svg?event=schedule"
               alt="Jazzy Semi-Binary Main"/>
       </a> <br />
-      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-semi-binary-testing.yml?query=branch%3Amain+">
-         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/jazzy-semi-binary-testing.yml/badge.svg?branch=main"
-              alt="Jazzy Semi-Binary Testing"/>
-      </a>
+    </td>
+    <td> <!-- kilted -->
+      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/kilted-binary-main.yml?query=branch%3Amain+">
+         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/kilted-binary-main.yml/badge.svg?branch=main"
+              alt="Kilted Binary Main"/>
+      </a> <br />
+      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/kilted-binary-testing.yml?query=branch%3Amain+">
+         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/kilted-binary-testing.yml/badge.svg?branch=main"
+              alt="Kilted Binary Testing"/>
+      </a> <br />
+      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/kilted-semi-binary-main.yml?query=branch%3Amain+">
+         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/kilted-semi-binary-main.yml/badge.svg?branch=main"
+              alt="Kilted Semi-Binary Main"/>
+      </a> <br />
     </td>
     <td> <!-- rolling -->
       <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/rolling-binary-main.yml?query=branch%3Amain+">
@@ -65,10 +73,6 @@ red pipeline there should be a corresponding issue labeled with [ci-failure](htt
          <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/rolling-semi-binary-main.yml/badge.svg?branch=main"
               alt="Rolling Semi-Binary Main"/>
       </a> <br />
-      <a href="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/rolling-semi-binary-testing.yml?query=branch%3Amain+">
-         <img src="https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/actions/workflows/rolling-semi-binary-testing.yml/badge.svg?branch=main"
-              alt="Rolling Semi-Binary Testing"/>
-      </a>
     </td>
   </tr>
   <tr>
@@ -85,6 +89,13 @@ red pipeline there should be a corresponding issue labeled with [ci-failure](htt
       <a href='https://build.ros2.org/job/Jbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Jbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_dashboard_msgs'></a>
       <a href='https://build.ros2.org/job/Jbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Jbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_moveit_config'></a>
       <a href='https://build.ros2.org/job/Jbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Jbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_robot_driver'></a>
+    </td>
+    <td> <!-- kilted -->
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_calibration'></a><br/>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_controllers__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_controllers__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_controllers'></a>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_dashboard_msgs__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_dashboard_msgs'></a>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_moveit_config__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_moveit_config'></a>
+      <a href='https://build.ros2.org/job/Kbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Kbin_uN64__ur_robot_driver__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_robot_driver'></a>
     </td>
     <td> <!-- rolling -->
       <a href='https://build.ros2.org/job/Rbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/'><img src='https://build.ros2.org/job/Rbin_uN64__ur_calibration__ubuntu_noble_amd64__binary/badge/icon?subject=uN64_ur_calibration'></a><br/>
@@ -103,7 +114,7 @@ red pipeline there should be a corresponding issue labeled with [ci-failure](htt
 
    Uses repos file: `src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver-not-released.<ros-distro>.repos`
 
-1. Semi-binary builds - against released core ROS packages (main and testing), but the immediate dependencies are pulled from source.
+1. Semi-binary builds - against released core ROS packages, but the immediate dependencies are pulled from source.
    Shows that local build with dependencies is possible and if this fails we can expect that after the next package sync we will not be able to build.
 
    Uses repos file: `src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver.repos`

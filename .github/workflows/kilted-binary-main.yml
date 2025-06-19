@@ -1,4 +1,4 @@
-name: Jazzy Semi Binary Build Testing
+name: Kilted Binary Build Main
 on:
   workflow_dispatch:
   pull_request:
@@ -12,10 +12,9 @@ on:
     - cron: '13 4 * * *'
 
 jobs:
-  jazzy_semi_testing:
+  kilted_binary_main:
     uses: ./.github/workflows/reusable_ici.yml
     with:
-      ros_distro: jazzy
-      ros_repo: testing
-      upstream_workspace: Universal_Robots_ROS2_Driver.jazzy.repos
+      ros_distro: kilted
+      ros_repo: main
       ref_for_scheduled_build: main
