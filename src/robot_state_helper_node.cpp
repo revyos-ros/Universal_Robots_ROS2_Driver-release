@@ -1,4 +1,4 @@
-// Copyright 2019, FZI Forschungszentrum Informatik
+// Copyright 2024, FZI Forschungszentrum Informatik, Created on behalf of Universal Robots A/S
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -26,46 +26,24 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-//----------------------------------------------------------------------
-/*!\file
- *
- * \author  Felix Exner exner@fzi.de
- * \date    2019-10-21
- *
- */
-//----------------------------------------------------------------------
-
-#include "ur_robot_driver/dashboard_client_ros.hpp"
-
-#include <memory>
-#include <string>
-
-#include <rclcpp/logging.hpp>
+#include "ur_robot_driver/robot_state_helper.hpp"
 #include "ur_robot_driver/urcl_log_handler.hpp"
 
 int main(int argc, char** argv)
 {
   rclcpp::init(argc, argv);
-  rclcpp::Node::SharedPtr node = rclcpp::Node::make_shared("ur_dashboard_client");
-
-  // The IP address under which the robot is reachable.
-  std::string robot_ip = node->declare_parameter<std::string>("robot_ip", "192.168.56.101");
-  node->get_parameter<std::string>("robot_ip", robot_ip);
-
+  rclcpp::Node::SharedPtr node = rclcpp::Node::make_shared("robot_state_helper");
   ur_robot_driver::registerUrclLogHandler("");  // Set empty tf_prefix at the moment
-
-  std::shared_ptr<ur_robot_driver::DashboardClientROS> client;
+  std::shared_ptr<ur_robot_driver::RobotStateHelper> robot_state_helper;
   try {
-    client = std::make_shared<ur_robot_driver::DashboardClientROS>(node, robot_ip);
+    robot_state_helper = std::make_shared<ur_robot_driver::RobotStateHelper>(node);
   } catch (const urcl::UrException& e) {
-    RCLCPP_WARN(rclcpp::get_logger("Dashboard_Client"),
-                "%s This warning is expected on a PolyScopeX robot. If you don't want to see this warning, "
-                "please don't start the dashboard client. Exiting dashboard client now.",
-                e.what());
-    return 0;
+    RCLCPP_ERROR(rclcpp::get_logger("robot_state_helper"), "%s", e.what());
   }
 
-  rclcpp::spin(node);
+  rclcpp::executors::MultiThreadedExecutor executor;
+  executor.add_node(node);
+  executor.spin();
 
   return 0;
 }

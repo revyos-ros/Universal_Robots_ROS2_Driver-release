@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root ``toctree`` directive.
 
+.. _ur_robot_driver:
+
 ur_robot_driver
 ===============
 
@@ -17,3 +19,5 @@ ur_robot_driver
    setup_tool_communication
    hardware_interface_parameters
    dashboard_client
+   robot_state_helper
+   controller_stopper
